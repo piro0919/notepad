@@ -1,0 +1,9 @@
+@import "styles/constants";
+
+.textarea {
+  background: map-get($map: $colors, $key: white);
+  outline: 0;
+  overflow: hidden;
+  resize: none;
+  width: 100%;
+}

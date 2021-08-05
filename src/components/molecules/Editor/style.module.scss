@@ -1,0 +1,19 @@
+.wrapper {
+  height: 100%;
+  position: relative;
+}
+
+.listWrapper {
+  padding: 0 4px 0 8px;
+  position: absolute;
+}
+
+.item {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.textareaWrapper {
+  height: 100%;
+}

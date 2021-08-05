@@ -1,0 +1,42 @@
+@import "styles/constants";
+@import "sass-mq";
+
+.aside {
+  background: map-get($map: $colors, $key: gray);
+  border-left: 1px solid map-get($map: $colors, $key: gray);
+  border-right: 1px solid map-get($map: $colors, $key: gray);
+  display: grid;
+  gap: 1px;
+  grid-template: 1fr / repeat(3, 1fr);
+  max-width: 980px;
+  width: 100%;
+}
+
+.anchor {
+  align-items: center;
+  background: map-get($map: $colors, $key: light-gray);
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+.active {
+  background: map-get($map: $colors, $key: white);
+}
+
+.icon {
+  @include mq($until: desktop) {
+    font-size: 24px;
+  }
+  @include mq($from: desktop) {
+    font-size: 1.2rem;
+  }
+}
+
+.text {
+  font-size: 1.2rem;
+  padding: 0 0 0 8px;
+  @include mq($until: desktop) {
+    display: none;
+  }
+}

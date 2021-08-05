@@ -1,0 +1,14 @@
+.radioGroup {
+  display: grid;
+  gap: 12px;
+  grid-auto-flow: column;
+}
+
+.label {
+  align-items: center;
+  display: flex;
+}
+
+.radio {
+  margin: 0 2px 0 0;
+}

@@ -1,0 +1,9 @@
+@import "styles/constants";
+
+.input {
+  border: 1px solid map-get($map: $colors, $key: black);
+  outline: 0;
+  padding: 4px 8px;
+  text-align: center;
+  width: 100%;
+}

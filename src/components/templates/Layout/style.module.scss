@@ -1,0 +1,24 @@
+@import "styles/constants";
+@import "sass-mq";
+
+.headerWrapper {
+  border-bottom: 1px solid map-get($map: $colors, $key: gray);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  @include mq($until: desktop) {
+    display: none;
+  }
+}
+
+.menuWrapper {
+  border-top: 1px solid map-get($map: $colors, $key: gray);
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  @include mq($from: desktop) {
+    display: none;
+  }
+}
