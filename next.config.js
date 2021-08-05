@@ -1,7 +1,13 @@
-module.exports = {
+const withPWA = require("next-pwa");
+
+module.exports = withPWA({
+  pwa: {
+    dest: "public",
+    disable: process.env.NODE_ENV === "development",
+  },
   webpack: (config) => {
     config.resolve.alias.firebaseui = "firebaseui-ja";
 
     return config;
   },
-};
+});
