@@ -1,5 +1,11 @@
 {
   "assignees": ["piro0919"],
   "extends": ["config:base"],
+  "packageRules": [
+    {
+      "automerge": false,
+      "packageNames": ["sass"]
+    }
+  ],
   "reviewers": ["piro0919"]
 }
