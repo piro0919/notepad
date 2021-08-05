@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
-import { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Loading from "components/templates/Loading";
+import Seo from "components/templates/Seo";
 import AuthContext from "contexts/AuthContext";
 import firebaseApp from "libs/firebaseApp";
 import "firebase/auth";
@@ -30,7 +31,12 @@ function Signout(): JSX.Element {
     }, 1000);
   }, [router, isSignedOut, uid]);
 
-  return <Loading active={true} />;
+  return (
+    <>
+      <Seo title="サインアウト" />
+      <Loading active={true} />
+    </>
+  );
 }
 
 export default Signout;

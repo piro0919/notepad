@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import Loading, { LoadingProps } from "components/templates/Loading";
+import Seo from "components/templates/Seo";
 import SignInTop, { SignInTopProps } from "components/templates/SignInTop";
 import firebaseApp from "libs/firebaseApp";
 import "firebase/auth";
@@ -26,6 +27,7 @@ function Signin(): JSX.Element {
 
   return (
     <>
+      <Seo title="サインイン" />
       <SignInTop
         firebaseAuth={firebaseAuth}
         setActive={setActive}

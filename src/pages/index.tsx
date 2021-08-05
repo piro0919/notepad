@@ -10,6 +10,7 @@ import NoteListTop, {
   NoteListTopProps,
 } from "components/templates/NoteListTop";
 import PublicTop from "components/templates/PublicTop";
+import Seo from "components/templates/Seo";
 import useNotesPerRow from "hooks/useNotesPerRow";
 import axiosInstance from "libs/axiosInstance";
 import compress from "libs/compress";
@@ -102,11 +103,15 @@ function Pages(props: PagesProps): JSX.Element {
 
   return props.isSignedIn ? (
     <>
+      <Seo title="メモ一覧" />
       <NoteListTop notes={notes} notesPerRow={parseInt(notesPerRow, 10)} />
       {active ? <Loading active={active} /> : null}
     </>
   ) : (
-    <PublicTop />
+    <>
+      <Seo noIndex={false} />
+      <PublicTop />
+    </>
   );
 }
 

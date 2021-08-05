@@ -30,6 +30,17 @@ function SettingsTop({
   const handleClick = useCallback<
     NonNullable<ButtonProps["onClick"]>
   >(async () => {
+    const result = await swal({
+      buttons: ["キャンセル", "OK"],
+      icon: "info",
+      text: "本当にサインアウトしますか？",
+      title: "サインアウトする",
+    });
+
+    if (!result) {
+      return;
+    }
+
     await router.push("/signout");
   }, [router]);
   const { innerHeight } = useWindowSize();

@@ -6,6 +6,7 @@ import React, { useCallback, useRef, useState } from "react";
 import Input, { InputProps } from "components/atoms/Input";
 import EditorTop, { EditorTopProps } from "components/templates/EditorTop";
 import Loading, { LoadingProps } from "components/templates/Loading";
+import Seo from "components/templates/Seo";
 import useEditorFontSize from "hooks/useEditorFontSize";
 import axiosInstance from "libs/axiosInstance";
 import compress from "libs/compress";
@@ -60,6 +61,7 @@ function New({ uid }: NewProps): JSX.Element {
 
   return (
     <>
+      <Seo title="新規メモ" />
       <EditorTop fontSize={editorFontSize} onSubmit={handleSubmit} />
       {active ? <Loading active={active} /> : null}
     </>

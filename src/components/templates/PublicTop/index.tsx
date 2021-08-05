@@ -1,4 +1,5 @@
 import NoSSR from "@mpth/react-no-ssr";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useCallback } from "react";
 import styles from "./style.module.scss";
@@ -20,7 +21,7 @@ function PublicTop(): JSX.Element {
           <Heading1 />
           <div className={styles.top}>
             <div className={styles.imageWrapper}>
-              <img alt="girl" className={styles.image} src="/images/girl.png" />
+              <Image alt="girl" layout="fill" src="/images/girl1.png" />
             </div>
             <p className={styles.description}>
               おんめもは、さまざまな端末でメモを共有できるサービスです。

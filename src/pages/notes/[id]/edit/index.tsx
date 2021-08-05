@@ -5,6 +5,7 @@ import React, { useCallback, useState } from "react";
 import swal from "sweetalert";
 import EditorTop, { EditorTopProps } from "components/templates/EditorTop";
 import Loading, { LoadingProps } from "components/templates/Loading";
+import Seo, { SeoProps } from "components/templates/Seo";
 import useEditorFontSize from "hooks/useEditorFontSize";
 import axiosInstance from "libs/axiosInstance";
 import compress from "libs/compress";
@@ -12,11 +13,12 @@ import decompress from "libs/decompress";
 import getNote from "libs/getNote";
 import verifyIdToken from "libs/verifyIdToken";
 
-export type EditProps = Pick<EditorTopProps, "initialNote"> & {
-  id: string;
-};
+export type EditProps = Pick<EditorTopProps, "initialNote"> &
+  Pick<SeoProps, "title"> & {
+    id: string;
+  };
 
-function Edit({ id, initialNote }: EditProps): JSX.Element {
+function Edit({ id, initialNote, title }: EditProps): JSX.Element {
   const { editorFontSize } = useEditorFontSize();
   const router = useRouter();
   const [active, setActive] = useState<LoadingProps["active"]>(false);
@@ -48,6 +50,7 @@ function Edit({ id, initialNote }: EditProps): JSX.Element {
 
   return (
     <>
+      <Seo title={title} />
       <EditorTop
         fontSize={editorFontSize}
         initialNote={initialNote}
@@ -85,13 +88,14 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
   }
 
   const {
-    data: { note },
+    data: { note, title },
   } = await getNote({ objectID: id });
 
   return {
     props: {
       id,
       initialNote: decompress(note),
+      title: decompress(title),
     },
   };
 };

@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import React, { useContext, useCallback, useMemo } from "react";
+import Seo from "components/templates/Seo";
 import SettingsTop, {
   SettingsTopProps,
 } from "components/templates/SettingsTop";
@@ -40,14 +41,17 @@ function Settings(): JSX.Element {
   );
 
   return (
-    <SettingsTop
-      editorFontSize={parseInt(editorFontSize, 10)}
-      fontSize={fontSize}
-      notesPerRow={notesPerRowProp}
-      onAfterChangeEditorFontSize={handleAfterChangeEditorFontSize}
-      onChangeFontSize={setFontSize}
-      onChangeNotesPerRow={handleChangeNotesPerRow}
-    />
+    <>
+      <Seo title="おんめも設定" />
+      <SettingsTop
+        editorFontSize={parseInt(editorFontSize, 10)}
+        fontSize={fontSize}
+        notesPerRow={notesPerRowProp}
+        onAfterChangeEditorFontSize={handleAfterChangeEditorFontSize}
+        onChangeFontSize={setFontSize}
+        onChangeNotesPerRow={handleChangeNotesPerRow}
+      />
+    </>
   );
 }
 

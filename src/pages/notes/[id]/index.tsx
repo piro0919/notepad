@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import dynamic from "next/dynamic";
 import React from "react";
 import { NoteTopProps } from "components/templates/NoteTop";
+import Seo, { SeoProps } from "components/templates/Seo";
 import useEditorFontSize from "hooks/useEditorFontSize";
 import decompress from "libs/decompress";
 import getNote from "libs/getNote";
@@ -11,12 +12,18 @@ const NoteTop = dynamic(() => import("components/templates/NoteTop"), {
   ssr: false,
 });
 
-export type IdProps = Pick<NoteTopProps, "id" | "note">;
+export type IdProps = Pick<NoteTopProps, "id" | "note"> &
+  Pick<SeoProps, "title">;
 
-function Id({ id, note }: IdProps): JSX.Element {
+function Id({ id, note, title }: IdProps): JSX.Element {
   const { editorFontSize } = useEditorFontSize();
 
-  return <NoteTop fontSize={editorFontSize} id={id} note={note} />;
+  return (
+    <>
+      <Seo title={title} />
+      <NoteTop fontSize={editorFontSize} id={id} note={note} />
+    </>
+  );
 }
 
 export type ServerSideProps = Pick<IdProps, "id" | "note">;
@@ -46,11 +53,11 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
   }
 
   const {
-    data: { note },
+    data: { note, title },
   } = await getNote({ objectID: id });
 
   return {
-    props: { id, note: decompress(note) },
+    props: { id, note: decompress(note), title: decompress(title) },
   };
 };
 
