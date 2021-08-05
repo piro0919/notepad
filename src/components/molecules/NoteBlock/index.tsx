@@ -21,10 +21,10 @@ function NoteBlock({
       <p className={styles.title}>{title}</p>
       <div className={styles.buttonsWrapper}>
         <button onClick={onEdit}>
-          <RiEditLine size={20} />
+          <RiEditLine size={24} />
         </button>
         <button onClick={onDelete}>
-          <RiDeleteBinLine size={20} />
+          <RiDeleteBinLine size={24} />
         </button>
       </div>
     </div>

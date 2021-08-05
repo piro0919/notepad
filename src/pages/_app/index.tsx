@@ -4,6 +4,7 @@ import "../../styles/fonts.scss";
 import "ress";
 import "react-toastify/dist/ReactToastify.css";
 import NoSSR from "@mpth/react-no-ssr";
+import dayjs from "dayjs";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
@@ -92,6 +93,10 @@ function MyApp({ Component, pageProps }: MyAppProps): JSX.Element {
       gutterWidth: 0,
       maxScreenClass: "xl",
     });
+  }, []);
+
+  useEffect(() => {
+    dayjs.locale("ja");
   }, []);
 
   return (

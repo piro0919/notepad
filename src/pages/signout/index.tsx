@@ -28,7 +28,7 @@ function Signout(): JSX.Element {
 
     setTimeout(async () => {
       await router.push("/");
-    }, 1000);
+    }, 2000);
   }, [router, isSignedOut, uid]);
 
   return (
