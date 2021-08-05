@@ -1,11 +1,13 @@
+import { Hit } from "@algolia/client-search";
 import dayjs from "dayjs";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import React, { useCallback, useState } from "react";
+import { toast } from "react-toastify";
 import swal from "sweetalert";
 import EditorTop, { EditorTopProps } from "components/templates/EditorTop";
 import Loading, { LoadingProps } from "components/templates/Loading";
-import Seo, { SeoProps } from "components/templates/Seo";
+import Seo from "components/templates/Seo";
 import useEditorFontSize from "hooks/useEditorFontSize";
 import axiosInstance from "libs/axiosInstance";
 import compress from "libs/compress";
@@ -13,19 +15,23 @@ import decompress from "libs/decompress";
 import getNote from "libs/getNote";
 import verifyIdToken from "libs/verifyIdToken";
 
-export type EditProps = Pick<EditorTopProps, "initialNote"> &
-  Pick<SeoProps, "title"> & {
-    id: string;
-  };
+export type EditProps = Pick<Hit<Note>, "note" | "objectID" | "title">;
 
-function Edit({ id, initialNote, title }: EditProps): JSX.Element {
+function Edit({ note, objectID, title }: EditProps): JSX.Element {
   const { editorFontSize } = useEditorFontSize();
   const router = useRouter();
   const [active, setActive] = useState<LoadingProps["active"]>(false);
   const handleSubmit = useCallback<EditorTopProps["onSubmit"]>(
     async ({ value }) => {
       const result = await swal({
-        buttons: ["キャンセル", "保存"],
+        buttons: {
+          cancel: {
+            className: "sweet-button",
+            text: "キャンセル",
+            visible: true,
+          },
+          confirm: { className: "sweet-button", text: "保存", visible: true },
+        },
         icon: "info",
         text: "メモを保存しますか？",
         title: "保存する",
@@ -38,22 +44,24 @@ function Edit({ id, initialNote, title }: EditProps): JSX.Element {
       setActive(true);
 
       await axiosInstance.patch("/note", {
+        objectID,
         modifiedDate: dayjs().format(),
         note: compress(value),
-        objectID: id,
       });
 
-      await router.push(`/notes/${id}`);
+      toast.success("メモを保存しました");
+
+      await router.push(`/notes/${objectID}`);
     },
-    [id, router]
+    [objectID, router]
   );
 
   return (
     <>
-      <Seo title={title} />
+      <Seo title={decompress(title)} />
       <EditorTop
         fontSize={editorFontSize}
-        initialNote={initialNote}
+        initialNote={decompress(note)}
         onSubmit={handleSubmit}
       />
       {active ? <Loading active={active} /> : null}
@@ -61,7 +69,7 @@ function Edit({ id, initialNote, title }: EditProps): JSX.Element {
   );
 }
 
-export type ServerSideProps = Pick<EditProps, "id" | "initialNote">;
+export type ServerSideProps = EditProps;
 
 export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
   ctx
@@ -88,15 +96,11 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
   }
 
   const {
-    data: { note, title },
+    data: { note, objectID, title },
   } = await getNote({ objectID: id });
 
   return {
-    props: {
-      id,
-      initialNote: decompress(note),
-      title: decompress(title),
-    },
+    props: { note, objectID, title },
   };
 };
 

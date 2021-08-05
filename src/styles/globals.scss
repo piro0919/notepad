@@ -1,6 +1,8 @@
+@import "styles/constants";
+
 html {
-  background: #eff3f4;
-  color: #222;
+  background: map-get($map: $colors, $key: gray);
+  color: map-get($map: $colors, $key: black);
   font: 62.5% arial, sans-serif;
   letter-spacing: 0.05em;
   line-height: 1.5;
@@ -34,4 +36,23 @@ textarea {
 
 .firebaseui-idp-twitter {
   background: #1da1f2 !important;
+}
+
+.sweet-button {
+  background: map-get($map: $colors, $key: white);
+  border: 1px solid map-get($map: $colors, $key: black);
+  border-radius: 4px;
+  color: map-get($map: $colors, $key: black);
+  font-weight: 400;
+  height: 36px;
+  outline: 0;
+  padding: 0 16px;
+}
+
+.sweet-button:focus {
+  box-shadow: none;
+}
+
+.sweet-button:hover {
+  background: map-get($map: $colors, $key: white) !important;
 }

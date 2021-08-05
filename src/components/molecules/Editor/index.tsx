@@ -46,7 +46,7 @@ const Editor = ({
     initialWidth: 0,
   });
   const count = useMemo(
-    () => Math.floor(height2 / rowHeight || 0),
+    () => Math.ceil(height2 / rowHeight || 0),
     [height2, rowHeight]
   );
   const items = useMemo(

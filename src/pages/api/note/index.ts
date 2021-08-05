@@ -2,11 +2,14 @@ import { NextApiRequest, NextApiResponse } from "next";
 import deleteNote from "libs/deleteNote";
 import partialUpdateObject from "libs/partialUpdateNote";
 import saveNote from "libs/saveNote";
+import verifyIdToken from "libs/verifyIdToken";
 
 async function handler(
-  { method, ...req }: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
+  const { method } = req;
+
   if (method === "DELETE") {
     const {
       query: { objectID },
@@ -48,8 +51,20 @@ async function handler(
   }
 
   if (method === "POST") {
+    const result = await verifyIdToken({ req });
+
+    if ("error" in result) {
+      res.status(404);
+      res.end();
+
+      return;
+    }
+
     const {
-      body: { createdDate, modifiedDate, note, title, uid },
+      data: { uid },
+    } = result;
+    const {
+      body: { createdDate, modifiedDate, note, title },
     } = req;
 
     const { data } = await saveNote({

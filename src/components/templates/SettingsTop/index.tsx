@@ -31,7 +31,14 @@ function SettingsTop({
     NonNullable<ButtonProps["onClick"]>
   >(async () => {
     const result = await swal({
-      buttons: ["キャンセル", "OK"],
+      buttons: {
+        cancel: {
+          className: "sweet-button",
+          text: "キャンセル",
+          visible: true,
+        },
+        confirm: { className: "sweet-button", text: "OK", visible: true },
+      },
       icon: "info",
       text: "本当にサインアウトしますか？",
       title: "サインアウトする",
@@ -60,6 +67,9 @@ function SettingsTop({
 
     if (result) {
       await swal({
+        buttons: {
+          confirm: { className: "sweet-button", text: "OK", visible: true },
+        },
         icon: "success",
         text: "このページを再読み込みします",
         title: "アップデートが完了しました",
@@ -69,6 +79,9 @@ function SettingsTop({
     }
 
     await swal({
+      buttons: {
+        confirm: { className: "sweet-button", text: "OK", visible: true },
+      },
       icon: "error",
       text: "アップデート中にエラーが起きました",
       title: "アップデートに失敗しました",

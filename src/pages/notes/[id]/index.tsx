@@ -1,8 +1,8 @@
+import { Hit } from "@algolia/client-search";
 import { GetServerSideProps } from "next";
 import dynamic from "next/dynamic";
 import React from "react";
-import { NoteTopProps } from "components/templates/NoteTop";
-import Seo, { SeoProps } from "components/templates/Seo";
+import Seo from "components/templates/Seo";
 import useEditorFontSize from "hooks/useEditorFontSize";
 import decompress from "libs/decompress";
 import getNote from "libs/getNote";
@@ -12,21 +12,24 @@ const NoteTop = dynamic(() => import("components/templates/NoteTop"), {
   ssr: false,
 });
 
-export type IdProps = Pick<NoteTopProps, "id" | "note"> &
-  Pick<SeoProps, "title">;
+export type IdProps = Pick<Hit<Note>, "note" | "objectID" | "title">;
 
-function Id({ id, note, title }: IdProps): JSX.Element {
+function Id({ note, objectID, title }: IdProps): JSX.Element {
   const { editorFontSize } = useEditorFontSize();
 
   return (
     <>
-      <Seo title={title} />
-      <NoteTop fontSize={editorFontSize} id={id} note={note} />
+      <Seo title={decompress(title)} />
+      <NoteTop
+        fontSize={editorFontSize}
+        id={objectID}
+        note={decompress(note)}
+      />
     </>
   );
 }
 
-export type ServerSideProps = Pick<IdProps, "id" | "note">;
+export type ServerSideProps = IdProps;
 
 export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
   ctx
@@ -53,11 +56,11 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
   }
 
   const {
-    data: { note, title },
+    data: { note, objectID, title },
   } = await getNote({ objectID: id });
 
   return {
-    props: { id, note: decompress(note), title: decompress(title) },
+    props: { note, objectID, title },
   };
 };
 

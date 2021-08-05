@@ -1,4 +1,3 @@
-import NoSSR from "@mpth/react-no-ssr";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useCallback } from "react";
@@ -15,25 +14,23 @@ function PublicTop(): JSX.Element {
   }, [router]);
 
   return (
-    <NoSSR>
-      <div className={styles.wrapper} style={{ height: `${innerHeight}px` }}>
-        <div className={styles.inner}>
-          <Heading1 />
-          <div className={styles.top}>
-            <div className={styles.imageWrapper}>
-              <Image alt="girl" layout="fill" src="/images/girl1.png" />
-            </div>
-            <p className={styles.description}>
-              おんめもは、さまざまな端末でメモを共有できるサービスです。
-            </p>
-            <div className={styles.buttonWrapper}>
-              <Button onClick={handleClick}>使ってみる</Button>
-            </div>
+    <div className={styles.wrapper} style={{ height: `${innerHeight}px` }}>
+      <div className={styles.inner}>
+        <Heading1 />
+        <div className={styles.top}>
+          <div className={styles.imageWrapper}>
+            <Image alt="girl" layout="fill" src="/images/girl1.png" />
           </div>
-          <footer className={styles.footer}>© 2021 おんめも</footer>
+          <p className={styles.description}>
+            おんめもは、さまざまな端末でメモを共有できるサービスです。
+          </p>
+          <div className={styles.buttonWrapper}>
+            <Button onClick={handleClick}>使ってみる</Button>
+          </div>
         </div>
+        <footer className={styles.footer}>© 2021 おんめも</footer>
       </div>
-    </NoSSR>
+    </div>
   );
 }
 

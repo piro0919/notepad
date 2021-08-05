@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import useForceUpdate from "use-force-update";
+import React from "react";
 import styles from "./style.module.scss";
 import FontSizeRadioButton, {
   FontSizeRadioButtonProps,
@@ -28,12 +27,6 @@ function Setting({
   onChangeFontSize,
   onChangeNotesPerRow,
 }: SettingProps): JSX.Element {
-  const forceUpdate = useForceUpdate();
-
-  useEffect(() => {
-    forceUpdate();
-  }, [fontSize, forceUpdate]);
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.filedWrapper}>

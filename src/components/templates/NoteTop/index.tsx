@@ -48,7 +48,7 @@ function NoteTop({ fontSize, id, note }: NoteTopProps): JSX.Element {
     [fontSize]
   );
   const count = useMemo(
-    () => Math.floor(height / itemHeight || 0),
+    () => Math.ceil(height / itemHeight || 0),
     [height, itemHeight]
   );
   const items = useMemo(

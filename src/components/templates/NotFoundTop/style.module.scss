@@ -1,0 +1,49 @@
+@import "styles/constants";
+@import "sass-mq";
+
+.wrapper {
+  @include mq($until: desktop) {
+    padding: 12px;
+  }
+  @include mq($from: desktop) {
+    padding: 24px;
+  }
+}
+
+.inner {
+  align-items: center;
+  background: map-get($map: $colors, $key: white);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 24px;
+  width: 100%;
+  @include mq($until: desktop) {
+    border-radius: 12px;
+  }
+  @include mq($from: desktop) {
+    border-radius: 24px;
+  }
+}
+
+.imageWrapper {
+  margin: -75px 0 0;
+  position: relative;
+  width: 250px;
+}
+
+.imageWrapper::before {
+  content: "";
+  display: block;
+  padding: 100% 0 0;
+}
+
+.description {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.buttonWrapper {
+  padding: 24px 0 0;
+}

@@ -2,7 +2,7 @@ import axios from "axios";
 import nookies from "nookies";
 import firebaseAdmin from "libs/firebaseAdmin";
 
-export type VerifyIdTokenParams = Parameters<typeof nookies.get>[0] &
+export type VerifyIdTokenParam = Parameters<typeof nookies.get>[0] &
   Parameters<typeof nookies.set>[0];
 
 export type VerifyIdTokenData = {
@@ -11,7 +11,7 @@ export type VerifyIdTokenData = {
 };
 
 async function verifyIdToken(
-  ctx: VerifyIdTokenParams
+  ctx: VerifyIdTokenParam
 ): Promise<{ data: VerifyIdTokenData } | { error: Error }> {
   const { id_token: idToken, refresh_token: refreshToken } = nookies.get(ctx);
 
