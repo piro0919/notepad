@@ -1,48 +1,52 @@
-import { NextSeo } from "next-seo";
+import Head from "next/head";
 import React from "react";
 
 export type SeoProps = {
   noIndex?: boolean;
+  ogType?: "article" | "website";
   title?: string;
 };
 
-function Seo({ noIndex = true, title }: SeoProps): JSX.Element {
+function Seo({
+  noIndex = true,
+  ogType = "article",
+  title,
+}: SeoProps): JSX.Element {
   return (
-    <NextSeo
-      description="おんめもは、さまざまな端末でメモを共有できるサービスです。"
-      noindex={noIndex}
-      openGraph={{
-        title,
-        description:
-          "おんめもは、さまざまな端末でメモを共有できるサービスです。",
-        images: [
-          {
-            alt: "girl1",
-            height: 800,
-            url: "https://on-memo.kk-web.link/images/girl1.png",
-            width: 800,
-          },
-          {
-            alt: "girl2",
-            height: 800,
-            url: "https://on-memo.kk-web.link/images/girl2.png",
-            width: 800,
-          },
-          {
-            alt: "cat1",
-            height: 800,
-            url: "https://on-memo.kk-web.link/images/cat1.png",
-            width: 800,
-          },
-        ],
-        site_name: "おんめも",
-        url: "https://on-memo.kk-web.link",
-      }}
-      title={`${title ? `${title} | ` : ""}おんめも`}
-      twitter={{
-        cardType: "summary",
-      }}
-    />
+    <Head>
+      <meta charSet="utf-8" />
+      <meta content="width=device-width" name="viewport" />
+      <meta
+        content={noIndex ? "noindex, nofollow" : "index, follow"}
+        name="robots"
+      />
+      <title>{`${title ? `${title} | ` : ""}おんめも`}</title>
+      <meta
+        content="おんめもは、さまざまな端末でメモを共有できるサービスです。"
+        name="description"
+      />
+      <meta content="telephone=no" name="format-detection" />
+      <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
+      <meta content={ogType} property="og:type" />
+      <meta
+        content={`${title ? `${title} | ` : ""}おんめも`}
+        property="og:title"
+      />
+      <meta
+        content="おんめもは、さまざまな端末でメモを共有できるサービスです。"
+        property="og:description"
+      />
+      <meta content="https://on-memo.kk-web.link" property="og:url" />
+      <meta
+        content="https://on-memo.kk-web.link/images/girl1.png"
+        property="og:image"
+      />
+      <meta content="おんめも" property="og:site_name" />
+      <meta content="ja_JP" property="og:locale" />
+      <meta content="183839507072963" property="fb:app_id" />
+      <meta content="summary" name="twitter:card" />
+      <link href="https://on-memo.kk-web.link" rel="canonical" />
+    </Head>
   );
 }
 
