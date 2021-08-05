@@ -1,15 +1,5 @@
 {
   "assignees": ["piro0919"],
   "extends": ["config:base"],
-  "packageRules": [
-    {
-      "automerge": false,
-      "packageNames": ["node-sass"]
-    },
-    {
-      "automerge": true,
-      "updateTypes": ["minor", "patch", "pin", "digest"]
-    }
-  ],
   "reviewers": ["piro0919"]
 }
