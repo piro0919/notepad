@@ -1,3 +1,4 @@
+import NoSSR from "@mpth/react-no-ssr";
 import useSize from "@react-hook/size";
 import React, { CSSProperties, ReactNode, useMemo, useRef } from "react";
 import styles from "./style.module.scss";
@@ -38,7 +39,9 @@ function Layout({ children }: LayoutProps): JSX.Element {
       <div className={styles.headerWrapper} ref={topTarget}>
         <Header />
       </div>
-      <main style={mainStyle}>{children({ bottomHeight, topHeight })}</main>
+      <main style={mainStyle}>
+        <NoSSR>{children({ bottomHeight, topHeight })}</NoSSR>
+      </main>
       <div className={styles.menuWrapper} ref={bottomTarget}>
         <Menu />
       </div>

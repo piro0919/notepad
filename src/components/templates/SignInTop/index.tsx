@@ -1,3 +1,4 @@
+import NoSSR from "@mpth/react-no-ssr";
 import React, { CSSProperties, useMemo, useEffect } from "react";
 import { Props } from "react-firebaseui";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -28,11 +29,13 @@ function SignInTop({
   }, [setActive, width]);
 
   return (
-    <div className={styles.wrapper} style={style}>
-      <div ref={ref}>
-        <StyledFirebaseAuth firebaseAuth={firebaseAuth} uiConfig={uiConfig} />
+    <NoSSR>
+      <div className={styles.wrapper} style={style}>
+        <div ref={ref}>
+          <StyledFirebaseAuth firebaseAuth={firebaseAuth} uiConfig={uiConfig} />
+        </div>
       </div>
-    </div>
+    </NoSSR>
   );
 }
 

@@ -3,7 +3,6 @@ import "../../styles/show.scss";
 import "../../styles/fonts.scss";
 import "ress";
 import "react-toastify/dist/ReactToastify.css";
-import NoSSR from "@mpth/react-no-ssr";
 import dayjs from "dayjs";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
@@ -102,28 +101,26 @@ function MyApp({ Component, pageProps }: MyAppProps): JSX.Element {
   return (
     <AuthContext.Provider value={{ uid }}>
       <FontSizeContext.Provider value={{ fontSize, setFontSize }}>
-        <NoSSR>
-          <Component {...pageProps} />
-          <PWAPrompt
-            copyAddHomeButtonLabel="2) 「ホーム画面に追加」をタップします。"
-            copyBody="このウェブサイトにはアプリ機能があります。ホーム画面に追加してフルスクリーンおよびオフラインで使用できます。"
-            copyClosePrompt="キャンセル"
-            copyShareButtonLabel="1) （四角から矢印が飛び出したマーク）をタップします。"
-            copyTitle="ホーム画面に追加"
-            debug={process.env.NODE_ENV === "development" && false}
-          />
-          <ToastContainer
-            autoClose={5000}
-            closeOnClick={true}
-            draggable={false}
-            hideProgressBar={false}
-            newestOnTop={false}
-            pauseOnFocusLoss={false}
-            pauseOnHover={false}
-            position="bottom-right"
-            rtl={false}
-          />
-        </NoSSR>
+        <Component {...pageProps} />
+        <PWAPrompt
+          copyAddHomeButtonLabel="2) 「ホーム画面に追加」をタップします。"
+          copyBody="このウェブサイトにはアプリ機能があります。ホーム画面に追加してフルスクリーンおよびオフラインで使用できます。"
+          copyClosePrompt="キャンセル"
+          copyShareButtonLabel="1) （四角から矢印が飛び出したマーク）をタップします。"
+          copyTitle="ホーム画面に追加"
+          debug={process.env.NODE_ENV === "development" && false}
+        />
+        <ToastContainer
+          autoClose={5000}
+          closeOnClick={true}
+          draggable={false}
+          hideProgressBar={false}
+          newestOnTop={false}
+          pauseOnFocusLoss={false}
+          pauseOnHover={false}
+          position="bottom-right"
+          rtl={false}
+        />
       </FontSizeContext.Provider>
     </AuthContext.Provider>
   );

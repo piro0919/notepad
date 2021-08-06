@@ -1,3 +1,4 @@
+import NoSSR from "@mpth/react-no-ssr";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { CSSProperties, useCallback, useMemo } from "react";
@@ -19,17 +20,19 @@ function NotFoundTop(): JSX.Element {
   }, [router]);
 
   return (
-    <div className={styles.wrapper} style={style}>
-      <div className={styles.inner}>
-        <div className={styles.imageWrapper}>
-          <Image alt="cat" layout="fill" src="/images/cat1.png" />
-        </div>
-        <p className={styles.description}>404 NOT FOUND</p>
-        <div className={styles.buttonWrapper}>
-          <Button onClick={handleClick}>戻る</Button>
+    <NoSSR>
+      <div className={styles.wrapper} style={style}>
+        <div className={styles.inner}>
+          <div className={styles.imageWrapper}>
+            <Image alt="cat" layout="fill" src="/images/cat1.png" />
+          </div>
+          <p className={styles.description}>404 NOT FOUND</p>
+          <div className={styles.buttonWrapper}>
+            <Button onClick={handleClick}>戻る</Button>
+          </div>
         </div>
       </div>
-    </div>
+    </NoSSR>
   );
 }
 

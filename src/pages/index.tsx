@@ -148,7 +148,7 @@ function Pages(props: PagesProps): JSX.Element {
     </>
   ) : (
     <>
-      <Seo noIndex={false} ogType="website" />
+      <Seo noIndex={false} type="website" />
       <PublicTop />
     </>
   );
