@@ -48,6 +48,9 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
   }
 
   const {
+    data: { uid },
+  } = result;
+  const {
     query: { id },
   } = ctx;
 
@@ -56,8 +59,17 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
   }
 
   const {
-    data: { note, objectID, title },
+    data: { note, objectID, title, uid: noteUid },
   } = await getNote({ objectID: id });
+
+  if (uid !== noteUid) {
+    return {
+      redirect: {
+        destination: "/404",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: { note, objectID, title },

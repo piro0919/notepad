@@ -6,7 +6,11 @@ import styles from "./style.module.scss";
 import Button, { ButtonProps } from "components/atoms/Button";
 import useWindowSize from "hooks/useWindowSize";
 
-function NotFoundTop(): JSX.Element {
+export type NotFoundTopProps = {
+  text: string;
+};
+
+function NotFoundTop({ text }: NotFoundTopProps): JSX.Element {
   const { innerHeight } = useWindowSize();
   const style = useMemo<CSSProperties>(
     () => ({
@@ -26,7 +30,7 @@ function NotFoundTop(): JSX.Element {
           <div className={styles.imageWrapper}>
             <Image alt="cat" layout="fill" src="/images/cat1.png" />
           </div>
-          <p className={styles.description}>404 NOT FOUND</p>
+          <p className={styles.description}>{text}</p>
           <div className={styles.buttonWrapper}>
             <Button onClick={handleClick}>戻る</Button>
           </div>

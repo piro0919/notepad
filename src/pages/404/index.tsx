@@ -6,7 +6,7 @@ function Custom404(): JSX.Element {
   return (
     <>
       <Seo title="404" />
-      <NotFoundTop />
+      <NotFoundTop text="お探しのページは見つかりません。" />
     </>
   );
 }
