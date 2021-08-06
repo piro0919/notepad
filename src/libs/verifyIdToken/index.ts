@@ -1,3 +1,4 @@
+import "firebase/auth";
 import axios from "axios";
 import nookies from "nookies";
 import firebaseAdmin from "libs/firebaseAdmin";
@@ -40,6 +41,7 @@ async function verifyIdToken(
       const { email } = await firebaseAdmin.auth().verifyIdToken(newIdToken);
 
       nookies.set(ctx, "id_token", newIdToken, {
+        maxAge: 30 * 24 * 60 * 60,
         path: "/",
       });
 

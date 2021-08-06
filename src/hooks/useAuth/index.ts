@@ -15,9 +15,11 @@ function useAuth(): Auth {
         const { refreshToken, uid } = user;
 
         setCookie(null, "id_token", idToken, {
+          maxAge: 30 * 24 * 60 * 60,
           path: "/",
         });
         setCookie(null, "refresh_token", refreshToken, {
+          maxAge: 30 * 24 * 60 * 60,
           path: "/",
         });
 
