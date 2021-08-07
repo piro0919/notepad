@@ -82,7 +82,10 @@ textarea {
   box-shadow: none;
 }
 
-.sweet-button:hover {
+.sweet-button:hover,
+.swal-icon--success::after,
+.swal-icon--success::before,
+.swal-icon--success__hide-corners {
   background: map-get($map: $colors, $key: white) !important;
 
   .dark-mode & {
