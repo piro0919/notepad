@@ -10,10 +10,12 @@ import useWindowSize from "hooks/useWindowSize";
 
 export type SettingsTopProps = Pick<
   SettingProps,
+  | "editorFontFamily"
   | "editorFontSize"
   | "fontSize"
   | "notesPerRow"
   | "onAfterChangeEditorFontSize"
+  | "onChangeEditorFontFamily"
   | "onChangeFontSize"
   | "onChangeNotesPerRow"
   | "onChangeTheme"
@@ -21,6 +23,8 @@ export type SettingsTopProps = Pick<
 >;
 
 function SettingsTop({
+  editorFontFamily,
+  onChangeEditorFontFamily,
   editorFontSize,
   fontSize,
   notesPerRow,
@@ -104,10 +108,12 @@ function SettingsTop({
           <div className={styles.wrapper} style={style}>
             <div className={styles.inner}>
               <Setting
+                editorFontFamily={editorFontFamily}
                 editorFontSize={editorFontSize}
                 fontSize={fontSize}
                 notesPerRow={notesPerRow}
                 onAfterChangeEditorFontSize={onAfterChangeEditorFontSize}
+                onChangeEditorFontFamily={onChangeEditorFontFamily}
                 onChangeFontSize={onChangeFontSize}
                 onChangeNotesPerRow={onChangeNotesPerRow}
                 onChangeTheme={onChangeTheme}

@@ -14,12 +14,18 @@ import Button, { ButtonProps } from "components/atoms/Button";
 import useWindowSize from "hooks/useWindowSize";
 
 export type NoteTopProps = {
+  fontFamily?: string;
   fontSize?: string;
   id: string;
   note: string;
 };
 
-function NoteTop({ fontSize, id, note }: NoteTopProps): JSX.Element {
+function NoteTop({
+  fontFamily,
+  fontSize,
+  id,
+  note,
+}: NoteTopProps): JSX.Element {
   const { innerHeight } = useWindowSize();
   const router = useRouter();
   const handleEdit = useCallback<NonNullable<ButtonProps["onClick"]>>(() => {
@@ -32,11 +38,12 @@ function NoteTop({ fontSize, id, note }: NoteTopProps): JSX.Element {
   });
   const noteStyle = useMemo<CSSProperties>(
     () => ({
+      fontFamily,
       fontSize: `${fontSize}px`,
       marginLeft: `${width}px`,
       wordBreak: "break-all",
     }),
-    [fontSize, width]
+    [fontFamily, fontSize, width]
   );
   const target = useRef<HTMLDivElement>(null);
   const [, height] = useSize(target, {

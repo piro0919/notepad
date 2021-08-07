@@ -5,10 +5,11 @@ import useWindowSize from "hooks/useWindowSize";
 
 export type EditorTopProps = Pick<
   EditorFormProps,
-  "fontSize" | "initialNote" | "onSubmit"
+  "fontFamily" | "fontSize" | "initialNote" | "onSubmit"
 >;
 
 function EditorTop({
+  fontFamily,
   fontSize,
   initialNote,
   onSubmit,
@@ -27,6 +28,7 @@ function EditorTop({
           <div style={style}>
             <EditorForm
               bottomHeight={bottomHeight}
+              fontFamily={fontFamily}
               fontSize={fontSize}
               initialNote={initialNote}
               onSubmit={onSubmit}

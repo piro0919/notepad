@@ -8,6 +8,7 @@ import swal from "sweetalert";
 import EditorTop, { EditorTopProps } from "components/templates/EditorTop";
 import Loading, { LoadingProps } from "components/templates/Loading";
 import Seo from "components/templates/Seo";
+import useEditorFontFamily from "hooks/useEditorFontFamily";
 import useEditorFontSize from "hooks/useEditorFontSize";
 import axiosInstance from "libs/axiosInstance";
 import compress from "libs/compress";
@@ -55,11 +56,13 @@ function Edit({ note, objectID, title }: EditProps): JSX.Element {
     },
     [objectID, router]
   );
+  const { editorFontFamily } = useEditorFontFamily();
 
   return (
     <>
       <Seo title={decompress(title)} />
       <EditorTop
+        fontFamily={editorFontFamily}
         fontSize={editorFontSize}
         initialNote={decompress(note)}
         onSubmit={handleSubmit}

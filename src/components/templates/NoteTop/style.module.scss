@@ -32,7 +32,9 @@
 }
 
 .buttonsWrapper {
-  display: flex;
+  display: grid;
+  gap: 16px;
+  grid-auto-flow: column;
   justify-content: flex-end;
   padding: 24px;
   position: fixed;

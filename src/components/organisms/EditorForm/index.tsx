@@ -10,7 +10,10 @@ import styles from "./style.module.scss";
 import Button from "components/atoms/Button";
 import Editor, { EditorProps } from "components/molecules/Editor";
 
-export type EditorFormProps = Pick<EditorProps, "bottomHeight" | "fontSize"> & {
+export type EditorFormProps = Pick<
+  EditorProps,
+  "bottomHeight" | "fontFamily" | "fontSize"
+> & {
   bottomHeight?: number;
   initialNote?: string;
   onSubmit: ({ value }: { value: string }) => void;
@@ -18,6 +21,7 @@ export type EditorFormProps = Pick<EditorProps, "bottomHeight" | "fontSize"> & {
 
 function EditorForm({
   bottomHeight = 0,
+  fontFamily,
   fontSize,
   initialNote = "",
   onSubmit,
@@ -56,6 +60,7 @@ function EditorForm({
     <form className={styles.form} onSubmit={handleSubmit}>
       <Editor
         bottomHeight={bottomHeight}
+        fontFamily={fontFamily}
         fontSize={fontSize}
         textareaRef={ref}
       />

@@ -8,6 +8,7 @@ import Input, { InputProps } from "components/atoms/Input";
 import EditorTop, { EditorTopProps } from "components/templates/EditorTop";
 import Loading, { LoadingProps } from "components/templates/Loading";
 import Seo from "components/templates/Seo";
+import useEditorFontFamily from "hooks/useEditorFontFamily";
 import useEditorFontSize from "hooks/useEditorFontSize";
 import axiosInstance from "libs/axiosInstance";
 import compress from "libs/compress";
@@ -73,11 +74,16 @@ function New(): JSX.Element {
     },
     [router]
   );
+  const { editorFontFamily } = useEditorFontFamily();
 
   return (
     <>
       <Seo title="新規メモ" />
-      <EditorTop fontSize={editorFontSize} onSubmit={handleSubmit} />
+      <EditorTop
+        fontFamily={editorFontFamily}
+        fontSize={editorFontSize}
+        onSubmit={handleSubmit}
+      />
       {active ? <Loading active={active} /> : null}
     </>
   );

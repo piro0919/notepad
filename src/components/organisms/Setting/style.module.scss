@@ -25,3 +25,11 @@
     background: map-get($map: $dark-colors, $key: gray);
   }
 }
+
+.notesPerRowSelectWrapper {
+  width: 96px;
+}
+
+.editorFontFamilySelectWrapper {
+  width: 252px;
+}

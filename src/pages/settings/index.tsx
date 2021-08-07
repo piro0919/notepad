@@ -6,6 +6,7 @@ import SettingsTop, {
 } from "components/templates/SettingsTop";
 import FontSizeContext from "contexts/FontSizeContext";
 import ThemeContext from "contexts/ThemeContext";
+import useEditorFontFamily from "hooks/useEditorFontFamily";
 import useEditorFontSize from "hooks/useEditorFontSize";
 import useNotesPerRow from "hooks/useNotesPerRow";
 import verifyIdToken from "libs/verifyIdToken";
@@ -31,15 +32,26 @@ function Settings(): JSX.Element {
     [setNotesPerRow]
   );
   const { setTheme, theme } = useContext(ThemeContext);
+  const { editorFontFamily, setEditorFontFamily } = useEditorFontFamily();
+  const handleChangeEditorFontFamily = useCallback<
+    NonNullable<SettingsTopProps["onChangeEditorFontFamily"]>
+  >(
+    ({ value }) => {
+      setEditorFontFamily(value);
+    },
+    [setEditorFontFamily]
+  );
 
   return (
     <>
       <Seo title="おんめも設定" />
       <SettingsTop
+        editorFontFamily={editorFontFamily}
         editorFontSize={parseInt(editorFontSize, 10)}
         fontSize={fontSize}
         notesPerRow={notesPerRow}
         onAfterChangeEditorFontSize={handleAfterChangeEditorFontSize}
+        onChangeEditorFontFamily={handleChangeEditorFontFamily}
         onChangeFontSize={setFontSize}
         onChangeNotesPerRow={handleChangeNotesPerRow}
         onChangeTheme={setTheme}

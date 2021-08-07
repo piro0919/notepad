@@ -6,19 +6,19 @@ type Value = Pick<Radio.RadioProps, "value"> & {
   label: Radio.RadioProps["id"];
 };
 
-export type FontSizeRadioButtonProps = Pick<
+export type RadioButtonProps = Pick<
   RadioGroup.RadioGroupProps,
   "name" | "onChange" | "selectedValue"
 > & {
   values: Value[];
 };
 
-function FontSizeRadioButton({
+function RadioButton({
   name,
   onChange,
   values,
   selectedValue,
-}: FontSizeRadioButtonProps): JSX.Element {
+}: RadioButtonProps): JSX.Element {
   const labels = useMemo(
     () =>
       values.map(({ label, value }) => (
@@ -42,4 +42,4 @@ function FontSizeRadioButton({
   );
 }
 
-export default FontSizeRadioButton;
+export default RadioButton;

@@ -5,21 +5,22 @@ import TextareaAutosize, {
 import styles from "./style.module.scss";
 
 export type TextareaProps = Pick<TextareaAutosizeProps, "onHeightChange"> & {
+  fontFamily?: string;
   fontSize?: string;
   ref: RefObject<HTMLTextAreaElement>;
 };
 
 const Textarea = forwardRef<HTMLTextAreaElement, Omit<TextareaProps, "ref">>(
   (
-    { fontSize, onHeightChange }: Omit<TextareaProps, "ref">,
+    { fontFamily, fontSize, onHeightChange }: Omit<TextareaProps, "ref">,
     ref
   ): JSX.Element => {
     const [style, setStyle] = useState<TextareaAutosizeProps["style"]>();
 
     useEffect(() => {
-      // useMemo で設定すると初期化されない
-      setStyle({ fontSize: `${fontSize}px` });
-    }, [fontSize]);
+      // useMemo で設定すると font-size が初期化されない
+      setStyle({ fontFamily, fontSize: `${fontSize}px` });
+    }, [fontFamily, fontSize]);
 
     return (
       <TextareaAutosize

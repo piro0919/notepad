@@ -3,6 +3,7 @@ import { GetServerSideProps } from "next";
 import dynamic from "next/dynamic";
 import React from "react";
 import Seo from "components/templates/Seo";
+import useEditorFontFamily from "hooks/useEditorFontFamily";
 import useEditorFontSize from "hooks/useEditorFontSize";
 import decompress from "libs/decompress";
 import getNote from "libs/getNote";
@@ -15,12 +16,14 @@ const NoteTop = dynamic(() => import("components/templates/NoteTop"), {
 export type IdProps = Pick<Hit<Note>, "note" | "objectID" | "title">;
 
 function Id({ note, objectID, title }: IdProps): JSX.Element {
+  const { editorFontFamily } = useEditorFontFamily();
   const { editorFontSize } = useEditorFontSize();
 
   return (
     <>
       <Seo title={decompress(title)} />
       <NoteTop
+        fontFamily={editorFontFamily}
         fontSize={editorFontSize}
         id={objectID}
         note={decompress(note)}
