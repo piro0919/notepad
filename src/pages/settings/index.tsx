@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next";
-import React, { useContext, useCallback, useMemo } from "react";
+import React, { useContext, useCallback } from "react";
 import Seo from "components/templates/Seo";
 import SettingsTop, {
   SettingsTopProps,

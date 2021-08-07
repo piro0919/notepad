@@ -80,6 +80,8 @@ function SettingsTop({
       });
 
       router.reload();
+
+      return;
     }
 
     await swal({
