@@ -1,4 +1,3 @@
-import "firebase/auth";
 import axios from "axios";
 import nookies from "nookies";
 import firebaseAdmin from "libs/firebaseAdmin";

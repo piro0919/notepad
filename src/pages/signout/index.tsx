@@ -4,7 +4,6 @@ import Loading from "components/templates/Loading";
 import Seo from "components/templates/Seo";
 import AuthContext from "contexts/AuthContext";
 import firebaseApp from "libs/firebaseApp";
-import "firebase/auth";
 
 function Signout(): JSX.Element {
   const { uid } = useContext(AuthContext);

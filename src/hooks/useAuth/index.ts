@@ -1,7 +1,6 @@
 import { destroyCookie, setCookie } from "nookies";
 import { useEffect, useState } from "react";
 import firebaseApp from "libs/firebaseApp";
-import "firebase/auth";
 
 export type Auth = Pick<firebaseApp.User, "uid">;
 

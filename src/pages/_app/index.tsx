@@ -1,9 +1,10 @@
+import "../../styles/fonts.scss";
 import "../../styles/global.scss";
 import "../../styles/show.scss";
-import "../../styles/fonts.scss";
-import "ress";
+import "firebase/auth";
 import "react-toastify/dist/ReactToastify.css";
 import "react-dropdown/style.css";
+import "ress";
 import dayjs from "dayjs";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";

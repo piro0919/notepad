@@ -3,7 +3,6 @@ import Loading, { LoadingProps } from "components/templates/Loading";
 import Seo from "components/templates/Seo";
 import SignInTop, { SignInTopProps } from "components/templates/SignInTop";
 import firebaseApp from "libs/firebaseApp";
-import "firebase/auth";
 
 function Signin(): JSX.Element {
   const firebaseAuth = useMemo<SignInTopProps["firebaseAuth"]>(
@@ -17,6 +16,7 @@ function Signin(): JSX.Element {
         // firebaseApp.auth.EmailAuthProvider.PROVIDER_ID,
         firebaseApp.auth.GoogleAuthProvider.PROVIDER_ID,
         firebaseApp.auth.TwitterAuthProvider.PROVIDER_ID,
+        firebaseApp.auth.FacebookAuthProvider.PROVIDER_ID,
       ],
       signInSuccessUrl: "/",
       siteName: "おんめも",
