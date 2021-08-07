@@ -14,7 +14,7 @@ function Signin(): JSX.Element {
     () => ({
       signInFlow: "redirect",
       signInOptions: [
-        firebaseApp.auth.EmailAuthProvider.PROVIDER_ID,
+        // firebaseApp.auth.EmailAuthProvider.PROVIDER_ID,
         firebaseApp.auth.GoogleAuthProvider.PROVIDER_ID,
         firebaseApp.auth.TwitterAuthProvider.PROVIDER_ID,
       ],
