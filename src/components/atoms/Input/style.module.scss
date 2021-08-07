@@ -1,9 +1,17 @@
 @import "styles/constants";
+@import "styles/mixin";
 
 .input {
+  background: map-get($map: $colors, $key: white);
   border: 1px solid map-get($map: $colors, $key: black);
+  color: map-get($map: $colors, $key: black);
   outline: 0;
   padding: 4px 8px;
   text-align: center;
   width: 100%;
+  @include dark-mode {
+    background: map-get($map: $dark-colors, $key: black);
+    border: 1px solid map-get($map: $dark-colors, $key: white);
+    color: map-get($map: $dark-colors, $key: white);
+  }
 }

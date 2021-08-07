@@ -1,32 +1,43 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { RadioGroup, Radio } from "react-radio-group";
 import styles from "./style.module.scss";
 
+type Value = Pick<Radio.RadioProps, "value"> & {
+  label: Radio.RadioProps["id"];
+};
+
 export type FontSizeRadioButtonProps = Pick<
   RadioGroup.RadioGroupProps,
-  "onChange" | "selectedValue"
->;
+  "name" | "onChange" | "selectedValue"
+> & {
+  values: Value[];
+};
 
 function FontSizeRadioButton({
+  name,
   onChange,
+  values,
   selectedValue,
 }: FontSizeRadioButtonProps): JSX.Element {
+  const labels = useMemo(
+    () =>
+      values.map(({ label, value }) => (
+        <label className={styles.label} htmlFor={label} key={label}>
+          <Radio className={styles.radio} id={label} value={value} />
+          {label}
+        </label>
+      )),
+    [values]
+  );
+
   return (
     <RadioGroup
       className={styles.radioGroup}
-      name="fruit"
+      name={name}
       onChange={onChange}
       selectedValue={selectedValue}
     >
-      <label className={styles.label} htmlFor="small">
-        <Radio className={styles.radio} value="small" />小
-      </label>
-      <label className={styles.label} htmlFor="medium">
-        <Radio className={styles.radio} value="medium" />中
-      </label>
-      <label className={styles.label} htmlFor="large">
-        <Radio className={styles.radio} value="large" />大
-      </label>
+      {labels}
     </RadioGroup>
   );
 }

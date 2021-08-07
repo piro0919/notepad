@@ -161,6 +161,8 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
 ) => {
   const result = await verifyIdToken(ctx);
 
+  console.log(result);
+
   if ("error" in result) {
     return {
       props: {

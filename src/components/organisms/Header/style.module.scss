@@ -1,8 +1,12 @@
 @import "styles/constants";
+@import "styles/mixin";
 
 .header {
   background: map-get($map: $colors, $key: light-gray);
   display: flex;
   justify-content: center;
   width: 100%;
+  @include dark-mode {
+    background: map-get($map: $dark-colors, $key: dark-gray);
+  }
 }

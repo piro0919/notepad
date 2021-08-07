@@ -5,6 +5,7 @@ import SettingsTop, {
   SettingsTopProps,
 } from "components/templates/SettingsTop";
 import FontSizeContext from "contexts/FontSizeContext";
+import ThemeContext from "contexts/ThemeContext";
 import useEditorFontSize from "hooks/useEditorFontSize";
 import useNotesPerRow from "hooks/useNotesPerRow";
 import verifyIdToken from "libs/verifyIdToken";
@@ -13,10 +14,6 @@ function Settings(): JSX.Element {
   const { editorFontSize, setEditorFontSize } = useEditorFontSize();
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const { notesPerRow, setNotesPerRow } = useNotesPerRow();
-  const notesPerRowProp = useMemo<SettingsTopProps["notesPerRow"]>(
-    () => ({ label: notesPerRow, value: notesPerRow }),
-    [notesPerRow]
-  );
   const handleAfterChangeEditorFontSize = useCallback<
     NonNullable<SettingsTopProps["onAfterChangeEditorFontSize"]>
   >(
@@ -28,17 +25,12 @@ function Settings(): JSX.Element {
   const handleChangeNotesPerRow = useCallback<
     NonNullable<SettingsTopProps["onChangeNotesPerRow"]>
   >(
-    (v) => {
-      if (!v) {
-        return;
-      }
-
-      const { value } = v;
-
+    ({ value }) => {
       setNotesPerRow(value);
     },
     [setNotesPerRow]
   );
+  const { setTheme, theme } = useContext(ThemeContext);
 
   return (
     <>
@@ -46,10 +38,12 @@ function Settings(): JSX.Element {
       <SettingsTop
         editorFontSize={parseInt(editorFontSize, 10)}
         fontSize={fontSize}
-        notesPerRow={notesPerRowProp}
+        notesPerRow={notesPerRow}
         onAfterChangeEditorFontSize={handleAfterChangeEditorFontSize}
         onChangeFontSize={setFontSize}
         onChangeNotesPerRow={handleChangeNotesPerRow}
+        onChangeTheme={setTheme}
+        theme={theme}
       />
     </>
   );

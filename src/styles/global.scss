@@ -1,3 +1,4 @@
+/* stylelint-disable selector-no-qualifying-type */
 @import "styles/constants";
 
 html {
@@ -7,6 +8,11 @@ html {
   letter-spacing: 0.05em;
   line-height: 1.5;
   overflow: hidden scroll;
+}
+
+html.dark-mode {
+  background: map-get($map: $dark-colors, $key: gray);
+  color: map-get($map: $dark-colors, $key: white);
 }
 
 body {
@@ -38,6 +44,23 @@ textarea {
   background: #1da1f2 !important;
 }
 
+.swal-modal {
+  background: map-get($map: $colors, $key: white);
+
+  .dark-mode & {
+    background: map-get($map: $dark-colors, $key: black);
+  }
+}
+
+.swal-title,
+.swal-text {
+  color: map-get($map: $colors, $key: black);
+
+  .dark-mode & {
+    color: map-get($map: $dark-colors, $key: white);
+  }
+}
+
 .sweet-button {
   background: map-get($map: $colors, $key: white);
   border: 1px solid map-get($map: $colors, $key: black);
@@ -47,6 +70,12 @@ textarea {
   height: 36px;
   outline: 0;
   padding: 0 16px;
+
+  .dark-mode & {
+    background: map-get($map: $dark-colors, $key: black);
+    border: 1px solid map-get($map: $dark-colors, $key: white);
+    color: map-get($map: $dark-colors, $key: white);
+  }
 }
 
 .sweet-button:focus {
@@ -55,4 +84,8 @@ textarea {
 
 .sweet-button:hover {
   background: map-get($map: $colors, $key: white) !important;
+
+  .dark-mode & {
+    background: map-get($map: $dark-colors, $key: black) !important;
+  }
 }

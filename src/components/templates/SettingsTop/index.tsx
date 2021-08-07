@@ -16,6 +16,8 @@ export type SettingsTopProps = Pick<
   | "onAfterChangeEditorFontSize"
   | "onChangeFontSize"
   | "onChangeNotesPerRow"
+  | "onChangeTheme"
+  | "theme"
 >;
 
 function SettingsTop({
@@ -25,6 +27,8 @@ function SettingsTop({
   onAfterChangeEditorFontSize,
   onChangeFontSize,
   onChangeNotesPerRow,
+  onChangeTheme,
+  theme,
 }: SettingsTopProps): JSX.Element {
   const router = useRouter();
   const handleClick = useCallback<
@@ -104,6 +108,8 @@ function SettingsTop({
                 onAfterChangeEditorFontSize={onAfterChangeEditorFontSize}
                 onChangeFontSize={onChangeFontSize}
                 onChangeNotesPerRow={onChangeNotesPerRow}
+                onChangeTheme={onChangeTheme}
+                theme={theme}
               />
               <div className={styles.buttonsWrapper}>
                 {!appinstalled && canInstallprompt && enabledPwa && !isPwa ? (

@@ -1,4 +1,70 @@
-.select {
-  width: 92px;
-  z-index: 2;
+@import "styles/constants";
+@import "styles/mixin";
+
+.dropdown {
+  width: 96px;
+}
+
+.control {
+  background: map-get($map: $colors, $key: white);
+  border: 1px solid map-get($map: $colors, $key: black);
+  color: map-get($map: $colors, $key: black);
+  padding-bottom: 4px;
+  padding-right: 20px;
+  padding-top: 4px;
+  transition: none;
+  @include dark-mode {
+    background: map-get($map: $dark-colors, $key: black);
+    border: 1px solid map-get($map: $dark-colors, $key: white);
+    color: map-get($map: $dark-colors, $key: white);
+  }
+}
+
+.menu {
+  background: map-get($map: $colors, $key: white);
+  border: 1px solid map-get($map: $colors, $key: black);
+  @include dark-mode {
+    background: map-get($map: $dark-colors, $key: black);
+    border: 1px solid map-get($map: $dark-colors, $key: white);
+  }
+}
+
+.menu :global(.Dropdown-option) {
+  color: map-get($map: $colors, $key: black);
+  padding-bottom: 4px;
+  padding-top: 4px;
+  @include dark-mode {
+    color: map-get($map: $dark-colors, $key: white);
+  }
+}
+
+.menu :global(.is-selected) {
+  background: map-get($map: $colors, $key: light-gray);
+  @include dark-mode {
+    color: map-get($map: $dark-colors, $key: dark-gray);
+  }
+}
+
+.menu :global(.Dropdown-option):hover {
+  background: map-get($map: $colors, $key: gray);
+  @include dark-mode {
+    color: map-get($map: $dark-colors, $key: gray);
+  }
+}
+
+.arrow {
+  border-color: map-get($map: $colors, $key: black) transparent transparent;
+  top: calc(50% - 2.5px);
+  @include dark-mode {
+    border-color: map-get($map: $dark-colors, $key: white) transparent
+      transparent;
+  }
+
+  :global(.is-open) & {
+    border-color: transparent transparent map-get($map: $colors, $key: black);
+    @include dark-mode {
+      border-color: transparent transparent
+        map-get($map: $dark-colors, $key: white);
+    }
+  }
 }

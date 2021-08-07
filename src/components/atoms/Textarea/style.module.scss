@@ -1,9 +1,15 @@
 @import "styles/constants";
+@import "styles/mixin";
 
 .textarea {
   background: map-get($map: $colors, $key: white);
+  color: map-get($map: $colors, $key: black);
   outline: 0;
   overflow: hidden;
   resize: none;
   width: 100%;
+  @include dark-mode {
+    background: map-get($map: $dark-colors, $key: black);
+    color: map-get($map: $colors, $key: white);
+  }
 }

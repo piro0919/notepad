@@ -17,6 +17,8 @@ export type SettingProps = {
   onAfterChangeEditorFontSize: FontSizeSliderProps["onAfterChange"];
   onChangeFontSize: FontSizeRadioButtonProps["onChange"];
   onChangeNotesPerRow: NotesPerRowSelectProps["onChange"];
+  onChangeTheme: FontSizeRadioButtonProps["onChange"];
+  theme: FontSizeRadioButtonProps["selectedValue"];
 };
 
 function Setting({
@@ -26,14 +28,35 @@ function Setting({
   onAfterChangeEditorFontSize,
   onChangeFontSize,
   onChangeNotesPerRow,
+  onChangeTheme,
+  theme,
 }: SettingProps): JSX.Element {
   return (
     <div className={styles.wrapper}>
       <div className={styles.filedWrapper}>
+        <label htmlFor="fontSize">カラーテーマ</label>
+        <FontSizeRadioButton
+          name="theme"
+          onChange={onChangeTheme}
+          selectedValue={theme}
+          values={[
+            { label: "ライト", value: "light" },
+            { label: "ダーク", value: "dark" },
+          ]}
+        />
+      </div>
+      <hr className={styles.hr} />
+      <div className={styles.filedWrapper}>
         <label htmlFor="fontSize">文字サイズ</label>
         <FontSizeRadioButton
+          name="fruit"
           onChange={onChangeFontSize}
           selectedValue={fontSize}
+          values={[
+            { label: "小", value: "small" },
+            { label: "中", value: "medium" },
+            { label: "大", value: "large" },
+          ]}
         />
       </div>
       <hr className={styles.hr} />

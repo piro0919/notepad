@@ -1,0 +1,6 @@
+@mixin dark-mode {
+  /* stylelint-disable rule-empty-line-before */
+  :global(.dark-mode) & {
+    @content;
+  }
+}

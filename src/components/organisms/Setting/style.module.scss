@@ -1,6 +1,12 @@
+@import "styles/constants";
+@import "styles/mixin";
+
 .wrapper {
-  background: #fff;
+  background: map-get($map: $colors, $key: white);
   padding: 16px;
+  @include dark-mode {
+    background: map-get($map: $dark-colors, $key: black);
+  }
 }
 
 .filedWrapper {
@@ -10,9 +16,12 @@
 }
 
 .hr {
-  background: #eff3f4;
+  background: map-get($map: $colors, $key: gray);
   border: 0;
   height: 1px;
   margin: 12px 0;
   width: 100%;
+  @include dark-mode {
+    background: map-get($map: $dark-colors, $key: gray);
+  }
 }

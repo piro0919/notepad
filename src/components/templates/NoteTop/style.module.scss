@@ -1,10 +1,14 @@
 @import "styles/constants";
+@import "styles/mixin";
 @import "sass-mq";
 
 .wrapper {
   background: map-get($map: $colors, $key: white);
   overflow: hidden;
   position: relative;
+  @include dark-mode {
+    background: map-get($map: $dark-colors, $key: black);
+  }
 }
 
 .listWrapper {
@@ -12,6 +16,9 @@
   height: 100%;
   padding: 0 4px 0 8px;
   position: absolute;
+  @include dark-mode {
+    background: map-get($map: $dark-colors, $key: gray);
+  }
 }
 
 .item {
