@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
-import React, { useContext, useCallback } from "react";
+import React, { useContext, useCallback, useState } from "react";
+import Loading, { LoadingProps } from "components/templates/Loading";
 import Seo from "components/templates/Seo";
 import SettingsTop, {
   SettingsTopProps,
@@ -41,6 +42,7 @@ function Settings(): JSX.Element {
     },
     [setEditorFontFamily]
   );
+  const [active, setActive] = useState<LoadingProps["active"]>(false);
 
   return (
     <>
@@ -55,8 +57,10 @@ function Settings(): JSX.Element {
         onChangeFontSize={setFontSize}
         onChangeNotesPerRow={handleChangeNotesPerRow}
         onChangeTheme={setTheme}
+        setActive={setActive}
         theme={theme}
       />
+      {active ? <Loading active={active} /> : null}
     </>
   );
 }

@@ -20,7 +20,7 @@ export type SettingsTopProps = Pick<
   | "onChangeNotesPerRow"
   | "onChangeTheme"
   | "theme"
->;
+> & { setActive: (active: boolean) => void };
 
 function SettingsTop({
   editorFontFamily,
@@ -32,6 +32,7 @@ function SettingsTop({
   onChangeFontSize,
   onChangeNotesPerRow,
   onChangeTheme,
+  setActive,
   theme,
 }: SettingsTopProps): JSX.Element {
   const router = useRouter();
@@ -71,9 +72,31 @@ function SettingsTop({
   const handleUpdate = useCallback<
     NonNullable<ButtonProps["onClick"]>
   >(async () => {
-    const result = await unregister();
+    const result = await swal({
+      buttons: {
+        cancel: {
+          className: "sweet-button",
+          text: "キャンセル",
+          visible: true,
+        },
+        confirm: { className: "sweet-button", text: "OK", visible: true },
+      },
+      icon: "info",
+      text: "おんめもをアップデートしますか？",
+      title: "アップデートする",
+    });
 
-    if (result) {
+    if (!result) {
+      return;
+    }
+
+    setActive(true);
+
+    const result2 = await unregister();
+
+    setActive(false);
+
+    if (result2) {
       await swal({
         buttons: {
           confirm: { className: "sweet-button", text: "OK", visible: true },
@@ -96,7 +119,7 @@ function SettingsTop({
       text: "アップデート中にエラーが起きました",
       title: "アップデートに失敗しました",
     });
-  }, [router, unregister]);
+  }, [router, setActive, unregister]);
 
   return (
     <Layout>
