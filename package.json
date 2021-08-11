@@ -35,7 +35,7 @@
     "sass-mq": "5.0.1",
     "sweetalert": "2.1.2",
     "swr": "0.5.6",
-    "use-pwa": "1.0.1"
+    "use-pwa": "1.1.0"
   },
   "devDependencies": {
     "@algolia/client-search": "4.10.3",
