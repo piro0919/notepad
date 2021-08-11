@@ -76,11 +76,11 @@ function Application({
     }
 
     if (enabledInstall) {
-      <Button onClick={installPwa}>インストール</Button>;
+      return <Button onClick={installPwa}>インストール</Button>;
     }
 
     if (enabledUpdate) {
-      <Button onClick={handleUpdate}>アップデート</Button>;
+      return <Button onClick={handleUpdate}>アップデート</Button>;
     }
 
     return <div>ー</div>;
