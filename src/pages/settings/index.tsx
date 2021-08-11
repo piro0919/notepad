@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import React, { useContext, useCallback, useState } from "react";
 import Loading, { LoadingProps } from "components/templates/Loading";
+import QrCode, { QrCodeProps } from "components/templates/QrCode";
 import Seo from "components/templates/Seo";
 import SettingsTop, {
   SettingsTopProps,
@@ -43,6 +44,15 @@ function Settings(): JSX.Element {
     [setEditorFontFamily]
   );
   const [active, setActive] = useState<LoadingProps["active"]>(false);
+  const [active2, setActive2] = useState<QrCodeProps["active"]>(false);
+  const handleDisplayQrCode = useCallback<
+    NonNullable<SettingsTopProps["onDisplayQrCode"]>
+  >(() => {
+    setActive2(true);
+  }, []);
+  const handleClick = useCallback<NonNullable<QrCodeProps["onClick"]>>(() => {
+    setActive2(false);
+  }, []);
 
   return (
     <>
@@ -57,10 +67,12 @@ function Settings(): JSX.Element {
         onChangeFontSize={setFontSize}
         onChangeNotesPerRow={handleChangeNotesPerRow}
         onChangeTheme={setTheme}
+        onDisplayQrCode={handleDisplayQrCode}
         setActive={setActive}
         theme={theme}
       />
       {active ? <Loading active={active} /> : null}
+      {active2 ? <QrCode active={active2} onClick={handleClick} /> : null}
     </>
   );
 }

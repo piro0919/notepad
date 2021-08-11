@@ -1,0 +1,33 @@
+@import "styles/constants";
+@import "styles/mixin";
+
+.wrapper {
+  background: map-get($map: $colors, $key: white);
+  padding: 16px;
+  @include dark-mode {
+    background: map-get($map: $dark-colors, $key: black);
+  }
+}
+
+.filedWrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hr {
+  background: map-get($map: $colors, $key: gray);
+  border: 0;
+  height: 1px;
+  margin: 12px 0;
+  width: 100%;
+  @include dark-mode {
+    background: map-get($map: $dark-colors, $key: gray);
+  }
+}
+
+.anchor {
+  align-items: center;
+  display: flex;
+  text-decoration: underline;
+}
