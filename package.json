@@ -40,7 +40,7 @@
     "use-pwa2": "0.2.0"
   },
   "devDependencies": {
-    "@algolia/client-search": "4.10.3",
+    "@algolia/client-search": "4.10.5",
     "@types/no-scroll": "2.1.0",
     "@types/qrcode.react": "1.0.2",
     "@types/react": "17.0.15",
