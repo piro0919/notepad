@@ -43,7 +43,7 @@
     "@algolia/client-search": "4.10.3",
     "@types/no-scroll": "2.1.0",
     "@types/qrcode.react": "1.0.2",
-    "@types/react": "17.0.15",
+    "@types/react": "17.0.52",
     "@types/react-radio-group": "3.0.3",
     "@types/react-slider": "1.3.1",
     "@typescript-eslint/eslint-plugin": "4.28.5",
