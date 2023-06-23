@@ -6,7 +6,7 @@
     "algoliasearch": "4.10.3",
     "axios": "0.21.1",
     "dayjs": "1.10.6",
-    "firebase": "8.8.0",
+    "firebase": "9.23.0",
     "firebase-admin": "9.11.0",
     "firebaseui-ja": "1.0.0",
     "lzutf8": "0.6.0",
