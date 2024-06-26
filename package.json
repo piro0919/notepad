@@ -3,7 +3,7 @@
     "@mpth/react-no-ssr": "1.0.1",
     "@react-hook/size": "2.1.2",
     "@sweetalert/with-react": "0.1.1",
-    "algoliasearch": "4.10.3",
+    "algoliasearch": "4.24.0",
     "axios": "0.21.1",
     "dayjs": "1.10.6",
     "firebase": "8.8.0",
@@ -40,7 +40,7 @@
     "use-pwa2": "0.2.0"
   },
   "devDependencies": {
-    "@algolia/client-search": "4.10.3",
+    "@algolia/client-search": "4.24.0",
     "@types/no-scroll": "2.1.0",
     "@types/qrcode.react": "1.0.2",
     "@types/react": "17.0.15",
