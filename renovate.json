@@ -1,11 +1,4 @@
 {
-  "assignees": ["piro0919"],
-  "extends": ["config:base"],
-  "packageRules": [
-    {
-      "automerge": false,
-      "packageNames": ["sass"]
-    }
-  ],
-  "reviewers": ["piro0919"]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>piro0919/renovate-config"]
 }
