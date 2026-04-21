@@ -2,7 +2,7 @@
 
 > Cross-device note sharing web app.
 
-[🔗 Live Site](https://on-memo.kk-web.link/)
+[🔗 Live Site](https://on-memo.kkweb.io/)
 
 ## ✨ Features
 
