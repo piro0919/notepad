@@ -1,8 +1,6 @@
-# おんめも / Onmemo
+# Onmemo
 
 > Cross-device note sharing web app.
-
-さまざまな端末でメモを共有する。
 
 [🔗 Live Site](https://on-memo.kk-web.link/)
 
@@ -23,3 +21,7 @@
 npm install
 npm run dev
 ```
+
+## 📄 License
+
+MIT
